@@ -5,9 +5,6 @@
     <title>myng</title>
 
     <style>
-        * {
-            box-sizing: border-box;
-        }
 
         body, html {
             width: 100%;
@@ -18,14 +15,19 @@
 
         .squad {
             width: 100%;
-            margin: 10px 0;
+            width: 95%;
+
+            margin: 10px auto;
+            
             position: relative;
             overflow: hidden;
             display: table;
             border: #000 solid thin;
-            padding: 0 5px;
+            padding: 2% 0 2% 2.5%;
             font-family: "Comic Sans MS", cursive, sans-serif;
             text-transform: uppercase;
+            font-size: 0;
+
         }
 
         div.col-full,
@@ -33,34 +35,36 @@
         div.col-md,
         div.col-sm {
             height: 100%;
-        }
-
-        img.col-full,
-        img.col-lg,
-        img.col-md,
-        img.col-sm {
-        }
+        }        
 
         .col-full,
         .col-lg,
         .col-md,
         .col-sm {
-            padding: 5px 10px;
-            margin: 5px 0;
+            padding: 0;
             background-color: rgba(255, 255, 255, .2);
             position: relative;
             overflow: hidden;
 
             display: inline-block;
             vertical-align: middle;
+
+            font-size: 16px;
+
+            background-color: yellow;
+
+            margin-top: 0;
+            margin-bottom: 0;
         }
 
         .col-full {
-            width: 100%;
+            width: 97.5%;
+            margin-right: 2.5%;
         }
 
         .col-lg {
-            width: 66.67%;
+            width: 64.2%;
+            margin-right: 2.5%;
         }
 
         .col-lg.center {
@@ -68,11 +72,12 @@
         }
 
         .col-lg.right {
-            margin-left: 33%;
+            margin-left: 33.3%;
         }
 
         .col-lg .col-md {
-            width: 75.7%
+            width: 75.7%;
+            width: 72.7%;
         }
 
         .col-lg .col-md.right {
@@ -80,15 +85,16 @@
         }
 
         .col-lg .col-sm {
-            width: 50%
+            width: 49%;
         }
 
         .col-lg .col-sm.right {
-            margin-left: 50%;
+            margin-left: 47%;
         }
 
         .col-md {
-            width: 50%;
+            width: 47.5%;
+            margin-right: 2.5%;
         }
 
         .col-md.center {
@@ -100,7 +106,7 @@
         }
 
         .col-md + .col-sm.right {
-            margin-left: 17% !important;
+            margin-left: 16.7% !important;
         }
 
         .col-md.right + .col-sm.right {
@@ -110,14 +116,16 @@
 
         .col-md .col-sm {
             width: 68.15%;
+            margin-left: 0;
         }
 
         .col-md .col-sm.right {
-            margin-left: 31.6%;
+            margin-left: 27.6%;
         }   
 
         .col-sm {
-            width: 33%;
+            width: 30.8%;
+            margin-right: 2.5%;
         }
 
         .col-sm .col-full,
@@ -128,15 +136,15 @@
         }
 
         .squad > .col-sm.center {
-            margin-left: 33%;
+            margin-left: 33.4%;
         }
 
         .squad > .col-sm.right {
-            margin-left: 66%;
+            margin-left: 66.7%;
         }
 
         .col-sm + .col-md.right {
-            margin-left: 17% !important;
+            margin-left: 16.7% !important;
         }
 
         .col-sm.right + .col-md.right {
@@ -156,11 +164,11 @@
         }
 
         .col-sm + .col-sm.right {
-            margin-left: 33%;
+            margin-left: 33.4%;
         }
 
         .col-sm.center + .col-sm {
-            margin-left:0 !important;
+            margin-left: 0 !important;
         }
 
         .bg {
@@ -176,7 +184,32 @@
             left: 0;
         }
 
+        @media (max-width: 600px) {
+
+            .squad.responsive {
+                text-align: center;
+            }
+
+            .squad.responsive p.col-full,
+            .squad.responsive p.col-lg,
+            .squad.responsive p.col-md,
+            .squad.responsive p.col-sm,
+            .squad.responsive div.col-full,
+            .squad.responsive div.col-lg,
+            .squad.responsive div.col-md,
+            .squad.responsive div.col-sm {
+                width: 97.5% !important;
+                float: none !important;
+                margin-left: 0 !important;
+                margin-right: 2.5% !important;
+                text-align: left;
+                margin-top: 16px;
+                margin-bottom: 16px;
+            }
+        }
+
     </style>
+    
 </head>
 <body>
 

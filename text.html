@@ -1,910 +1,957 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>myng</title>
+<meta charset="UTF-8">
+<title>myng</title>
 
-    <style>
-        * {
-            /*box-sizing: border-box;*/
+<style>
+
+    body, html {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        height: 0;
+    }
+
+    .squad {
+        width: 100%;
+        width: 95%;
+
+        margin: 10px auto;
+        
+        position: relative;
+        overflow: hidden;
+        display: table;
+        border: #000 solid thin;
+        padding: 2% 0 2% 2.5%;
+        font-family: "Comic Sans MS", cursive, sans-serif;
+        text-transform: uppercase;
+        font-size: 0;
+
+    }
+
+    div.col-full,
+    div.col-lg,
+    div.col-md,
+    div.col-sm {
+        height: 100%;
+    }        
+
+    .col-full,
+    .col-lg,
+    .col-md,
+    .col-sm {
+        padding: 0;
+        background-color: rgba(255, 255, 255, .2);
+        position: relative;
+        overflow: hidden;
+
+        display: inline-block;
+        vertical-align: middle;
+
+        font-size: 16px;
+
+        background-color: yellow;
+
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .col-full {
+        width: 97.5%;
+        margin-right: 2.5%;
+    }
+
+    .col-lg {
+        width: 64.2%;
+        margin-right: 2.5%;
+    }
+
+    .col-lg.center {
+        margin-left: 17%;
+    }
+
+    .col-lg.right {
+        margin-left: 33.3%;
+    }
+
+    .col-lg .col-md {
+        width: 75.7%;
+        width: 72.7%;
+    }
+
+    .col-lg .col-md.right {
+        margin-left: 24%;
+    }
+
+    .col-lg .col-sm {
+        width: 49%;
+    }
+
+    .col-lg .col-sm.right {
+        margin-left: 47%;
+    }
+
+    .col-md {
+        width: 47.5%;
+        margin-right: 2.5%;
+    }
+
+    .col-md.center {
+        margin-left: 25%;
+    }
+
+    .col-md.right {
+        margin-left: 50%;
+    }
+
+    .col-md + .col-sm.right {
+        margin-left: 16.7% !important;
+    }
+
+    .col-md.right + .col-sm.right {
+        margin-left: 0 !important;
+        float: right;
+    } 
+
+    .col-md .col-sm {
+        width: 68.15%;
+        margin-left: 0;
+    }
+
+    .col-md .col-sm.right {
+        margin-left: 27.6%;
+    }   
+
+    .col-sm {
+        width: 30.8%;
+        margin-right: 2.5%;
+    }
+
+    .col-sm .col-full,
+    .col-sm .col-lg,
+    .col-sm .col-md,
+    .col-sm .col-sm {
+        width: 100%;
+    }
+
+    .squad > .col-sm.center {
+        margin-left: 33.4%;
+    }
+
+    .squad > .col-sm.right {
+        margin-left: 66.7%;
+    }
+
+    .col-sm + .col-md.right {
+        margin-left: 16.7% !important;
+    }
+
+    .col-sm.right + .col-md.right {
+        /**
+        *
+        * ( ? )
+        *
+        */
+    }
+
+    .col-md.right + .col-sm.right {
+        /**
+        *
+        * ( ? )
+        *
+        */
+    }
+
+    .col-sm + .col-sm.right {
+        margin-left: 33.4%;
+    }
+
+    .col-sm.center + .col-sm {
+        margin-left: 0 !important;
+    }
+
+    .bg {
+        min-height: 100%;
+        min-width: 1024px;
+
+        width: 100%;
+        height: auto;
+
+        position: absolute;
+        z-index: -1;
+        top: 0;
+        left: 0;
+    }
+
+    @media (max-width: 600px) {
+
+        .squad.responsive {
+            text-align: center;
         }
 
-        body, html {
-            width: 100%;
-            height: 100%;
-            margin: 0;
-            height: 0;
-        }
-
-        .squad {
-            width: 100%;
-            width: 97%;
-
-            margin: 10px 0;
-            margin: 10px 1%;
-            
-            position: relative;
-            overflow: hidden;
-            display: table;
-            border: #000 solid thin;
-            padding: 0 5px;
-            font-family: "Comic Sans MS", cursive, sans-serif;
-            text-transform: uppercase;
-        }
-
-        div.col-full,
-        div.col-lg,
-        div.col-md,
-        div.col-sm {
-            height: 100%;
-        }        
-
-        .col-full,
-        .col-lg,
-        .col-md,
-        .col-sm {
-            padding: 5px 10px;
-            margin: 5px 0;
-            background-color: rgba(255, 255, 255, .2);
-            position: relative;
-            overflow: hidden;
-
-            display: inline-block;
-            vertical-align: middle;
-        }
-
-        .col-full {
-            width: 100%;
-        }
-
-        .col-lg {
-            width: 66.67%;
-            width: 65%;
-        }
-
-        .col-lg.center {
-            margin-left: 17%;
-        }
-
-        .col-lg.right {
-            margin-left: 33%;
-        }
-
-        .col-lg .col-md {
-            width: 75.7%;
-            width: 72.7%;
-        }
-
-        .col-lg .col-md.right {
-            margin-left: 24%;
-        }
-
-        .col-lg .col-sm {
-            width: 50%;
-            width: 49%;
-        }
-
-        .col-lg .col-sm.right {
-            margin-left: 50%;
-            margin-left: 47%;
-        }
-
-        .col-md {
-            width: 50%;
-            width: 48%;
-        }
-
-        .col-md.center {
-            margin-left: 25%;
-        }
-
-        .col-md.right {
-            margin-left: 50%;
-        }
-
-        .col-md + .col-sm.right {
-            margin-left: 17% !important;
-        }
-
-        .col-md.right + .col-sm.right {
+        .squad.responsive p.col-full,
+        .squad.responsive p.col-lg,
+        .squad.responsive p.col-md,
+        .squad.responsive p.col-sm,
+        .squad.responsive div.col-full,
+        .squad.responsive div.col-lg,
+        .squad.responsive div.col-md,
+        .squad.responsive div.col-sm {
+            width: 97.5% !important;
+            float: none !important;
             margin-left: 0 !important;
-            float: right;
-        } 
-
-        .col-md .col-sm {
-            width: 68.15%;
+            margin-right: 2.5% !important;
+            text-align: left;
+            margin-top: 16px;
+            margin-bottom: 16px;
         }
+    }
 
-        .col-md .col-sm.right {
-            margin-left: 31.6%;
-            margin-left: 27.6%;
-        }   
+</style>
 
-        .col-sm {
-            width: 33%;
-            width: 31%;
-        }
-
-        .col-sm .col-full,
-        .col-sm .col-lg,
-        .col-sm .col-md,
-        .col-sm .col-sm {
-            width: 100%;
-        }
-
-        .squad > .col-sm.center {
-            margin-left: 33%;
-        }
-
-        .squad > .col-sm.right {
-            margin-left: 66%;
-        }
-
-        .col-sm + .col-md.right {
-            margin-left: 17% !important;
-        }
-
-        .col-sm.right + .col-md.right {
-            /**
-            *
-            * ( ? )
-            *
-            */
-        }
-
-        .col-md.right + .col-sm.right {
-            /**
-            *
-            * ( ? )
-            *
-            */
-        }
-
-        .col-sm + .col-sm.right {
-            margin-left: 33%;
-        }
-
-        .col-sm.center + .col-sm {
-            margin-left:0 !important;
-        }
-
-        .bg {
-            min-height: 100%;
-            min-width: 1024px;
-
-            width: 100%;
-            height: auto;
-
-            position: absolute;
-            z-index: -1;
-            top: 0;
-            left: 0;
-        }
-
-    </style>
 </head>
 <body>
 
-    <p>1</p>
+<p>1</p>
 
-    <div class="squad">
-        <p class="col-md">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
+<div class="squad responsive">
+    <p class="col-md">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
+    <p class="col-md">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
+</div>
+
+<!-- -->
+
+<p>2</p>
+
+<div class="squad responsive">
+    <p class="col-md">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
+</div>
+
+<!-- -->
+
+<p>3</p>
+
+<div class="squad responsive">
+    <p class="col-md center">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
+</div>
+
+<!-- -->
+
+<p>4</p>
+
+<div class="squad responsive">
+    <p class="col-md right">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
+</div>
+
+<!-- -->
+
+<p>5</p>
+
+<div class="squad responsive">
+    <p class="col-md">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
+    <p class="col-sm right">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
+</div>
+
+<!-- -->
+
+<p>6</p>
+
+<div class="squad responsive">
+    <p class="col-md">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
+    <p class="col-sm">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
+</div>
+
+<!-- -->
+
+<p>7</p>
+
+<div class="squad responsive">
+    <p class="col-sm">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
+    <p class="col-md right">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
+</div>
+
+<!-- -->
+
+<p>8</p>
+
+<div class="squad responsive">
+    <p class="col-sm right">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
+    <p class="col-md right">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
+</div>
+
+<!-- -->
+
+<p>9</p>
+
+<div class="squad responsive">
+    <p class="col-sm">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
+    <p class="col-sm">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
+    <p class="col-sm">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
+</div>
+
+<!-- -->
+
+<p>10</p>
+
+<div class="squad responsive">
+    <p class="col-sm">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
+</div>
+
+<!-- -->
+
+<p>11</p>
+
+<div class="squad responsive">
+    <p class="col-sm center">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
+</div>
+
+<!-- -->
+
+<p>12</p>
+
+<div class="squad responsive">
+    <p class="col-sm right">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
+</div>
+
+<!-- -->
+
+<p>13</p>
+
+<div class="squad responsive">
+    <p class="col-sm center">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
+    <p class="col-sm center">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
+</div>
+
+<!-- -->
+
+<p>14</p>
+
+<div class="squad responsive">
+    <p class="col-sm">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
+    <p class="col-sm">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
+</div>
+
+<!-- -->
+
+<p>15</p>
+
+<div class="squad responsive">
+    <p class="col-sm center">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
+    <p class="col-sm right">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
+</div>
+
+<!-- -->
+
+<p>16</p>
+
+<div class="squad responsive">
+    <p class="col-sm">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
+    <p class="col-sm right">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
+</div>
+
+<!-- -->
+
+<p>17</p>
+
+<div class="squad responsive">
+    <p class="col-sm">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
+    <p class="col-md right">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
+</div>
+
+<!-- -->
+
+<p>18</p>
+
+<div class="squad responsive">
+    <p class="col-sm">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
+    <p class="col-md">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
+</div>
+
+<!-- -->
+
+<p>19</p>
+
+<div class="squad responsive">
+    <p class="col-md">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
+    <p class="col-sm right">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
+</div>
+
+<!-- -->
+
+<p>20</p>
+
+<div class="squad responsive">
+    <p class="col-md right">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
+    <p class="col-sm right">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
+</div>
+
+<!-- -->
+
+<p>21</p>
+
+<div class="squad responsive">
+    <p class="col-sm">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
+    <p class="col-lg">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
+</div>
+
+<!-- -->
+
+<p>22</p>
+
+<div class="squad responsive">
+    <p class="col-lg">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
+    <p class="col-sm">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
+</div>
+
+<!-- -->
+
+<p>23</p>
+
+<div class="squad responsive">
+    <p class="col-lg">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
+</div>
+
+<!-- -->
+
+<p>24</p>
+
+<div class="squad responsive">
+    <p class="col-lg center">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
+</div>
+
+<!-- -->
+
+<p>25</p>
+
+<div class="squad responsive">
+    <p class="col-lg right">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
+</div>
+
+<!-- -->
+
+<p>26</p>
+
+<div class="squad responsive">
+    <p class="col-full">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
+</div>
+
+<!-- -->
+
+<p>27</p>
+
+<div class="squad responsive">
+    <div class="col-lg">
+        <img class="bg" src="bg.jpg" alt="">
+        <p class="col-sm">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
+    </div>
+</div>
+
+<!-- -->
+
+<p>28</p>
+
+<div class="squad responsive">
+    <div class="col-lg">
+        <img class="bg" src="bg.jpg" alt="">
+        <p class="col-sm">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
+    </div>
+    <p class="col-sm">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
+</div>
+
+<!-- -->
+
+<p>29</p>
+
+<div class="squad responsive">
+    <div class="col-lg center">
+        <img class="bg" src="bg.jpg" alt="">
+        <p class="col-sm">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
+    </div>
+</div>
+
+<!-- -->
+
+<p>30</p>
+
+<div class="squad responsive">
+    <div class="col-lg right">
+        <img class="bg" src="bg.jpg" alt="">
+        <p class="col-sm">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
+    </div>
+</div>
+
+<!-- -->
+
+<p>31</p>
+
+<div class="squad responsive">
+    <p class="col-sm">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
+    <div class="col-lg">
+        <img class="bg" src="bg.jpg" alt="">
+        <p class="col-sm">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
+    </div>
+</div>
+
+<!-- -->
+
+<p>32</p>
+
+<div class="squad responsive">
+    <div class="col-lg">
+        <img class="bg" src="bg.jpg" alt="">
+        <p class="col-sm right">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
+    </div>
+</div>
+
+<!-- -->
+
+<p>33</p>
+
+<div class="squad responsive">
+    <div class="col-lg">
+        <img class="bg" src="bg.jpg" alt="">
+        <p class="col-sm right">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
+    </div>
+    <p class="col-sm">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
+</div>
+
+<!-- -->
+
+<p>34</p>
+
+<div class="squad responsive">
+    <div class="col-lg center">
+        <img class="bg" src="bg.jpg" alt="">
+        <p class="col-sm right">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
+    </div>
+</div>
+
+<!-- -->
+
+<p>35</p>
+
+<div class="squad responsive">
+    <div class="col-lg right">
+        <img class="bg" src="bg.jpg" alt="">
+        <p class="col-sm right">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
+    </div>
+</div>
+
+<!-- -->
+
+<p>36</p>
+
+<div class="squad responsive">
+    <p class="col-sm">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
+    <div class="col-lg">
+        <img class="bg" src="bg.jpg" alt="">
+        <p class="col-sm right">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
+    </div>
+</div>
+
+<!-- -->
+
+<p>37</p>
+
+<div class="squad responsive">
+    <div class="col-lg">
+        <img class="bg" src="bg.jpg" alt="">
         <p class="col-md">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
     </div>
+</div>
 
-    <!-- -->
+<!-- -->
 
-    <p>2</p>
+<p>38</p>
 
-    <div class="squad">
+<div class="squad responsive">
+    <div class="col-lg">
+        <img class="bg" src="bg.jpg" alt="">
         <p class="col-md">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
     </div>
+    <p class="col-sm">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
+</div>
 
-    <!-- -->
+<!-- -->
 
-    <p>3</p>
+<p>39</p>
 
-    <div class="squad">
-        <p class="col-md center">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
+<div class="squad responsive">
+    <div class="col-lg center">
+        <img class="bg" src="bg.jpg" alt="">
+        <p class="col-md">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
     </div>
+</div>
 
-    <!-- -->
+<!-- -->
 
-    <p>4</p>
+<p>40</p>
 
-    <div class="squad">
+<div class="squad responsive">
+    <div class="col-lg right">
+        <img class="bg" src="bg.jpg" alt="">
+        <p class="col-md">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
+    </div>
+</div>
+
+<!-- -->
+
+<p>41</p>
+
+<div class="squad responsive">
+    <p class="col-sm">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
+    <div class="col-lg">
+        <img class="bg" src="bg.jpg" alt="">
+        <p class="col-md">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
+    </div>
+</div>
+
+<!-- -->
+
+<p>42</p>
+
+<div class="squad responsive">
+    <div class="col-lg">
+        <img class="bg" src="bg.jpg" alt="">
         <p class="col-md right">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
     </div>
+</div>
 
-    <!-- -->
+<!-- -->
 
-    <p>5</p>
+<p>43</p>
 
-    <div class="squad">
-        <p class="col-md">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
-        <p class="col-sm right">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
-    </div>
-
-    <!-- -->
-
-    <p>6</p>
-
-    <div class="squad">
-        <p class="col-md">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
-        <p class="col-sm">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
-    </div>
-
-    <!-- -->
-
-    <p>7</p>
-
-    <div class="squad">
-        <p class="col-sm">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
+<div class="squad responsive">
+    <div class="col-lg">
+        <img class="bg" src="bg.jpg" alt="">
         <p class="col-md right">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
     </div>
+    <p class="col-sm">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
+</div>
 
-    <!-- -->
+<!-- -->
 
-    <p>8</p>
+<p>44</p>
 
-    <div class="squad">
-        <p class="col-sm right">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
+<div class="squad responsive">
+    <div class="col-lg center">
+        <img class="bg" src="bg.jpg" alt="">
         <p class="col-md right">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
     </div>
+</div>
 
-    <!-- -->
+<!-- -->
 
-    <p>9</p>
+<p>45</p>
 
-    <div class="squad">
-        <p class="col-sm">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
-        <p class="col-sm">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
-        <p class="col-sm">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
-    </div>
-
-    <!-- -->
-
-    <p>10</p>
-
-    <div class="squad">
-        <p class="col-sm">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
-    </div>
-
-    <!-- -->
-
-    <p>11</p>
-
-    <div class="squad">
-        <p class="col-sm center">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
-    </div>
-
-    <!-- -->
-
-    <p>12</p>
-
-    <div class="squad">
-        <p class="col-sm right">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
-    </div>
-
-    <!-- -->
-
-    <p>13</p>
-
-    <div class="squad">
-        <p class="col-sm center">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
-        <p class="col-sm center">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
-    </div>
-
-    <!-- -->
-
-    <p>14</p>
-
-    <div class="squad">
-        <p class="col-sm">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
-        <p class="col-sm">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
-    </div>
-
-    <!-- -->
-
-    <p>15</p>
-
-    <div class="squad">
-        <p class="col-sm center">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
-        <p class="col-sm right">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
-    </div>
-
-    <!-- -->
-
-    <p>16</p>
-
-    <div class="squad">
-        <p class="col-sm">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
-        <p class="col-sm right">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
-    </div>
-
-    <!-- -->
-
-    <p>17</p>
-
-    <div class="squad">
-        <p class="col-sm">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
+<div class="squad responsive">
+    <div class="col-lg right">
+        <img class="bg" src="bg.jpg" alt="">
         <p class="col-md right">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
     </div>
+</div>
 
-    <!-- -->
+<!-- -->
 
-    <p>18</p>
+<p>46</p>
 
-    <div class="squad">
-        <p class="col-sm">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
-        <p class="col-md">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
-    </div>
-
-    <!-- -->
-
-    <p>19</p>
-
-    <div class="squad">
-        <p class="col-md">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
-        <p class="col-sm right">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
-    </div>
-
-    <!-- -->
-
-    <p>20</p>
-
-    <div class="squad">
+<div class="squad responsive">
+    <p class="col-sm">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
+    <div class="col-lg">
+        <img class="bg" src="bg.jpg" alt="">
         <p class="col-md right">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
+    </div>
+</div>
+
+<!-- -->
+
+<p>47</p>
+
+<div class="squad responsive">
+    <div class="col-md">
+        <img class="bg" src="bg.jpg" alt="">
+        <p class="col-sm">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
+    </div>
+</div>
+
+<!-- -->
+
+<p>48</p>
+
+<div class="squad responsive">
+    <div class="col-md">
+        <img class="bg" src="bg.jpg" alt="">
+        <p class="col-sm">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
+    </div>
+    <p class="col-sm">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
+</div>
+
+<!-- -->
+
+<p>49</p>
+
+<div class="squad responsive">
+    <div class="col-md">
+        <img class="bg" src="bg.jpg" alt="">
+        <p class="col-sm">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
+    </div>
+    <p class="col-sm right">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
+</div>
+
+<!-- -->
+
+<p>50</p>
+
+<div class="squad responsive">
+    <div class="col-md center">
+        <img class="bg" src="bg.jpg" alt="">
+        <p class="col-sm">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
+    </div>
+</div>
+
+<!-- -->
+
+<p>51</p>
+
+<div class="squad responsive">
+    <div class="col-md right">
+        <img class="bg" src="bg.jpg" alt="">
+        <p class="col-sm">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
+    </div>
+</div>
+
+<!-- -->
+
+<p>52</p>
+
+<div class="squad responsive">
+    <p class="col-sm right">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
+    <div class="col-md right">
+        <img class="bg" src="bg.jpg" alt="">
+        <p class="col-sm">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
+    </div>
+</div>
+
+<!-- -->
+
+<p>53</p>
+
+<div class="squad responsive">
+    <p class="col-sm">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
+    <div class="col-md right">
+        <img class="bg" src="bg.jpg" alt="">
+        <p class="col-sm">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
+    </div>
+</div>
+
+<!-- -->
+
+<p>54</p>
+
+<div class="squad responsive">
+    <div class="col-md">
+        <img class="bg" src="bg.jpg" alt="">
         <p class="col-sm right">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
     </div>
+</div>
 
-    <!-- -->
+<!-- -->
 
-    <p>21</p>
+<p>55</p>
 
-    <div class="squad">
-        <p class="col-sm">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
-        <p class="col-lg">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
-    </div>
-
-    <!-- -->
-
-    <p>22</p>
-
-    <div class="squad">
-        <p class="col-lg">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
-        <p class="col-sm">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
-    </div>
-
-    <!-- -->
-
-    <p>23</p>
-
-    <div class="squad">
-        <p class="col-lg">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
-    </div>
-
-    <!-- -->
-
-    <p>24</p>
-
-    <div class="squad">
-        <p class="col-lg center">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
-    </div>
-
-    <!-- -->
-
-    <p>25</p>
-
-    <div class="squad">
-        <p class="col-lg right">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
-    </div>
-
-    <!-- -->
-
-    <p>26</p>
-
-    <div class="squad">
-        <p class="col-full">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
-    </div>
-
-    <!-- -->
-
-    <p>27</p>
-
-    <div class="squad">
-        <div class="col-lg">
-            <img class="bg" src="bg.jpg" alt="">
-            <p class="col-sm">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
-        </div>
-    </div>
-
-    <!-- -->
-
-    <p>28</p>
-
-    <div class="squad">
-        <div class="col-lg">
-            <img class="bg" src="bg.jpg" alt="">
-            <p class="col-sm">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
-        </div>
-        <p class="col-sm">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
-    </div>
-
-    <!-- -->
-
-    <p>29</p>
-
-    <div class="squad">
-        <div class="col-lg center">
-            <img class="bg" src="bg.jpg" alt="">
-            <p class="col-sm">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
-        </div>
-    </div>
-
-    <!-- -->
-
-    <p>30</p>
-
-    <div class="squad">
-        <div class="col-lg right">
-            <img class="bg" src="bg.jpg" alt="">
-            <p class="col-sm">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
-        </div>
-    </div>
-
-    <!-- -->
-
-    <p>31</p>
-
-    <div class="squad">
-        <p class="col-sm">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
-        <div class="col-lg">
-            <img class="bg" src="bg.jpg" alt="">
-            <p class="col-sm">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
-        </div>
-    </div>
-
-    <!-- -->
-
-    <p>32</p>
-
-    <div class="squad">
-        <div class="col-lg">
-            <img class="bg" src="bg.jpg" alt="">
-            <p class="col-sm right">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
-        </div>
-    </div>
-
-    <!-- -->
-
-    <p>33</p>
-
-    <div class="squad">
-        <div class="col-lg">
-            <img class="bg" src="bg.jpg" alt="">
-            <p class="col-sm right">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
-        </div>
-        <p class="col-sm">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
-    </div>
-
-    <!-- -->
-
-    <p>34</p>
-
-    <div class="squad">
-        <div class="col-lg center">
-            <img class="bg" src="bg.jpg" alt="">
-            <p class="col-sm right">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
-        </div>
-    </div>
-
-    <!-- -->
-
-    <p>35</p>
-
-    <div class="squad">
-        <div class="col-lg right">
-            <img class="bg" src="bg.jpg" alt="">
-            <p class="col-sm right">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
-        </div>
-    </div>
-
-    <!-- -->
-
-    <p>36</p>
-
-    <div class="squad">
-        <p class="col-sm">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
-        <div class="col-lg">
-            <img class="bg" src="bg.jpg" alt="">
-            <p class="col-sm right">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
-        </div>
-    </div>
-
-    <!-- -->
-
-    <p>37</p>
-
-    <div class="squad">
-        <div class="col-lg">
-            <img class="bg" src="bg.jpg" alt="">
-            <p class="col-md">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
-        </div>
-    </div>
-
-    <!-- -->
-
-    <p>38</p>
-
-    <div class="squad">
-        <div class="col-lg">
-            <img class="bg" src="bg.jpg" alt="">
-            <p class="col-md">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
-        </div>
-        <p class="col-sm">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
-    </div>
-
-    <!-- -->
-
-    <p>39</p>
-
-    <div class="squad">
-        <div class="col-lg center">
-            <img class="bg" src="bg.jpg" alt="">
-            <p class="col-md">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
-        </div>
-    </div>
-
-    <!-- -->
-
-    <p>40</p>
-
-    <div class="squad">
-        <div class="col-lg right">
-            <img class="bg" src="bg.jpg" alt="">
-            <p class="col-md">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
-        </div>
-    </div>
-
-    <!-- -->
-
-    <p>41</p>
-
-    <div class="squad">
-        <p class="col-sm">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
-        <div class="col-lg">
-            <img class="bg" src="bg.jpg" alt="">
-            <p class="col-md">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
-        </div>
-    </div>
-
-    <!-- -->
-
-    <p>42</p>
-
-    <div class="squad">
-        <div class="col-lg">
-            <img class="bg" src="bg.jpg" alt="">
-            <p class="col-md right">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
-        </div>
-    </div>
-
-    <!-- -->
-
-    <p>43</p>
-
-    <div class="squad">
-        <div class="col-lg">
-            <img class="bg" src="bg.jpg" alt="">
-            <p class="col-md right">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
-        </div>
-        <p class="col-sm">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
-    </div>
-
-    <!-- -->
-
-    <p>44</p>
-
-    <div class="squad">
-        <div class="col-lg center">
-            <img class="bg" src="bg.jpg" alt="">
-            <p class="col-md right">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
-        </div>
-    </div>
-
-    <!-- -->
-
-    <p>45</p>
-
-    <div class="squad">
-        <div class="col-lg right">
-            <img class="bg" src="bg.jpg" alt="">
-            <p class="col-md right">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
-        </div>
-    </div>
-
-    <!-- -->
-
-    <p>46</p>
-
-    <div class="squad">
-        <p class="col-sm">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
-        <div class="col-lg">
-            <img class="bg" src="bg.jpg" alt="">
-            <p class="col-md right">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
-        </div>
-    </div>
-
-    <!-- -->
-
-    <p>47</p>
-
-    <div class="squad">
-        <div class="col-md">
-            <img class="bg" src="bg.jpg" alt="">
-            <p class="col-sm">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
-        </div>
-    </div>
-
-    <!-- -->
-
-    <p>48</p>
-
-    <div class="squad">
-        <div class="col-md">
-            <img class="bg" src="bg.jpg" alt="">
-            <p class="col-sm">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
-        </div>
-        <p class="col-sm">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
-    </div>
-
-    <!-- -->
-
-    <p>49</p>
-
-    <div class="squad">
-        <div class="col-md">
-            <img class="bg" src="bg.jpg" alt="">
-            <p class="col-sm">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
-        </div>
+<div class="squad responsive">
+    <div class="col-md">
+        <img class="bg" src="bg.jpg" alt="">
         <p class="col-sm right">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
     </div>
+    <p class="col-sm">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
+</div>
 
-    <!-- -->
+<!-- -->
 
-    <p>50</p>
+<p>56</p>
 
-    <div class="squad">
-        <div class="col-md center">
-            <img class="bg" src="bg.jpg" alt="">
-            <p class="col-sm">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
-        </div>
-    </div>
-
-    <!-- -->
-
-    <p>51</p>
-
-    <div class="squad">
-        <div class="col-md right">
-            <img class="bg" src="bg.jpg" alt="">
-            <p class="col-sm">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
-        </div>
-    </div>
-
-    <!-- -->
-
-    <p>52</p>
-
-    <div class="squad">
-        <p class="col-sm right">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
-        <div class="col-md right">
-            <img class="bg" src="bg.jpg" alt="">
-            <p class="col-sm">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
-        </div>
-    </div>
-
-    <!-- -->
-
-    <p>53</p>
-
-    <div class="squad">
-        <p class="col-sm">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
-        <div class="col-md right">
-            <img class="bg" src="bg.jpg" alt="">
-            <p class="col-sm">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
-        </div>
-    </div>
-
-    <!-- -->
-
-    <p>54</p>
-
-    <div class="squad">
-        <div class="col-md">
-            <img class="bg" src="bg.jpg" alt="">
-            <p class="col-sm right">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
-        </div>
-    </div>
-
-    <!-- -->
-
-    <p>55</p>
-
-    <div class="squad">
-        <div class="col-md">
-            <img class="bg" src="bg.jpg" alt="">
-            <p class="col-sm right">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
-        </div>
-        <p class="col-sm">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
-    </div>
-
-    <!-- -->
-
-    <p>56</p>
-
-    <div class="squad">
-        <div class="col-md">
-            <img class="bg" src="bg.jpg" alt="">
-            <p class="col-sm right">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
-        </div>
+<div class="squad responsive">
+    <div class="col-md">
+        <img class="bg" src="bg.jpg" alt="">
         <p class="col-sm right">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
     </div>
+    <p class="col-sm right">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
+</div>
 
-    <!-- -->
+<!-- -->
 
-    <p>57</p>
+<p>57</p>
 
-    <div class="squad">
-        <div class="col-md center">
-            <img class="bg" src="bg.jpg" alt="">
-            <p class="col-sm right">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
-        </div>
-    </div>
-
-    <!-- -->
-
-    <p>58</p>
-
-    <div class="squad">
-        <div class="col-md right">
-            <img class="bg" src="bg.jpg" alt="">
-            <p class="col-sm right">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
-        </div>
-    </div>
-
-    <!-- -->
-
-    <p>59</p>
-
-    <div class="squad">
+<div class="squad responsive">
+    <div class="col-md center">
+        <img class="bg" src="bg.jpg" alt="">
         <p class="col-sm right">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
-        <div class="col-md right">
-            <img class="bg" src="bg.jpg" alt="">
-            <p class="col-sm right">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
-        </div>
     </div>
+</div>
 
-    <!-- -->
+<!-- -->
 
-    <p>60</p>
+<p>58</p>
 
-    <div class="squad">
+<div class="squad responsive">
+    <div class="col-md right">
+        <img class="bg" src="bg.jpg" alt="">
+        <p class="col-sm right">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
+    </div>
+</div>
+
+<!-- -->
+
+<p>59</p>
+
+<div class="squad responsive">
+    <p class="col-sm right">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
+    <div class="col-md right">
+        <img class="bg" src="bg.jpg" alt="">
+        <p class="col-sm right">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
+    </div>
+</div>
+
+<!-- -->
+
+<p>60</p>
+
+<div class="squad responsive">
+    <p class="col-sm">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
+    <div class="col-md right">
+        <img class="bg" src="bg.jpg" alt="">
+        <p class="col-sm right">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
+    </div>
+</div>
+
+<!-- -->
+
+<p>61</p>
+
+<div class="squad responsive">
+    <div class="col-md">
+        <img class="bg" src="bg.jpg" alt="">
         <p class="col-sm">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
-        <div class="col-md right">
-            <img class="bg" src="bg.jpg" alt="">
-            <p class="col-sm right">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
-        </div>
     </div>
+    <p class="col-md">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
+</div>
 
-    <!-- -->
+<!-- -->
 
-    <p>61</p>
+<p>62</p>
 
-    <div class="squad">
-        <div class="col-md">
-            <img class="bg" src="bg.jpg" alt="">
-            <p class="col-sm">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
-        </div>
-        <p class="col-md">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
+<div class="squad responsive">
+    <p class="col-md">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
+    <div class="col-md">
+        <img class="bg" src="bg.jpg" alt="">
+        <p class="col-sm">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
     </div>
+</div>
 
-    <!-- -->
+<!-- -->
 
-    <p>62</p>
+<p>63</p>
 
-    <div class="squad">
-        <p class="col-md">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
-        <div class="col-md">
-            <img class="bg" src="bg.jpg" alt="">
-            <p class="col-sm">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
-        </div>
+<div class="squad responsive">
+    <div class="col-md">
+        <img class="bg" src="bg.jpg" alt="">
+        <p class="col-sm">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
     </div>
-
-    <!-- -->
-
-    <p>63</p>
-
-    <div class="squad">
-        <div class="col-md">
-            <img class="bg" src="bg.jpg" alt="">
-            <p class="col-sm">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
-        </div>
-        <div class="col-md">
-            <img class="bg" src="bg.jpg" alt="">
-            <p class="col-sm">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
-        </div>
+    <div class="col-md">
+        <img class="bg" src="bg.jpg" alt="">
+        <p class="col-sm">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
     </div>
+</div>
 
-    <!-- -->
+<!-- -->
 
-    <p>64</p>
+<p>64</p>
 
-    <div class="squad">
-        <div class="col-md">
-            <img class="bg" src="bg.jpg" alt="">
-            <p class="col-sm right">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
-        </div>
-        <div class="col-md">
-            <img class="bg" src="bg.jpg" alt="">
-            <p class="col-sm">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
-        </div>
+<div class="squad responsive">
+    <div class="col-md">
+        <img class="bg" src="bg.jpg" alt="">
+        <p class="col-sm right">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
     </div>
-
-    <!-- -->
-
-    <p>65</p>
-
-    <div class="squad">
-        <div class="col-md">
-            <img class="bg" src="bg.jpg" alt="">
-            <p class="col-sm right">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
-        </div>
-        <p class="col-md">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
+    <div class="col-md">
+        <img class="bg" src="bg.jpg" alt="">
+        <p class="col-sm">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
     </div>
+</div>
 
-    <!-- -->
+<!-- -->
 
-    <p>66</p>
+<p>65</p>
 
-    <div class="squad">
-        <p class="col-md">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
-        <div class="col-md">
-            <img class="bg" src="bg.jpg" alt="">
-            <p class="col-sm right">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
-        </div>
+<div class="squad responsive">
+    <div class="col-md">
+        <img class="bg" src="bg.jpg" alt="">
+        <p class="col-sm right">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
     </div>
+    <p class="col-md">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
+</div>
 
-    <!-- -->
+<!-- -->
 
-    <p>67</p>
+<p>66</p>
 
-    <div class="squad">
-        <div class="col-md">
-            <img class="bg" src="bg.jpg" alt="">
-            <p class="col-sm right">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
-        </div>
-        <div class="col-md">
-            <img class="bg" src="bg.jpg" alt="">
-            <p class="col-sm right">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
-        </div>
+<div class="squad responsive">
+    <p class="col-md">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
+    <div class="col-md">
+        <img class="bg" src="bg.jpg" alt="">
+        <p class="col-sm right">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
     </div>
+</div>
 
-    <!-- -->
+<!-- -->
 
-    <p>68</p>
+<p>67</p>
 
-    <div class="squad">
-        <div class="col-md">
-            <img class="bg" src="bg.jpg" alt="">
-            <p class="col-sm">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
-        </div>
-        <div class="col-md">
-            <img class="bg" src="bg.jpg" alt="">
-            <p class="col-sm right">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
-        </div>
+<div class="squad responsive">
+    <div class="col-md">
+        <img class="bg" src="bg.jpg" alt="">
+        <p class="col-sm right">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
     </div>
+    <div class="col-md">
+        <img class="bg" src="bg.jpg" alt="">
+        <p class="col-sm right">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
+    </div>
+</div>
+
+<!-- -->
+
+<p>68</p>
+
+<div class="squad responsive">
+    <div class="col-md">
+        <img class="bg" src="bg.jpg" alt="">
+        <p class="col-sm">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
+    </div>
+    <div class="col-md">
+        <img class="bg" src="bg.jpg" alt="">
+        <p class="col-sm right">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
+    </div>
+</div>
+
+<!-- -->
+
+<p>69</p>
+
+<div class="squad responsive">
+    <p class="col-sm">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
+    <img class="col-sm" src="hero.svg" alt="hero">
+    <p class="col-sm">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
+</div>
+
+<!-- -->
+
+<p>70</p>
+
+<div class="squad responsive">
+    <img class="col-md" src="hero.svg" alt="hero">
+    <p class="col-sm">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit commodi reiciendis ipsa enim officia sequi neque, rerum vel repellat. Delectus incidunt similique explicabo, asperiores neque cum fugiat debitis reprehenderit voluptates.</p>
+</div>
 
 </body>
 </html>
